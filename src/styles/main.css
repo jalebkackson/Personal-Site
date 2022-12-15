@@ -1,0 +1,411 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
+
+body {
+  background: #181818;
+  overflow-y: auto;
+  color: #f1f1f1;
+}
+
+.navbar {
+  background-color: #1b2c33;
+  border-bottom: 1px solid rgb(30, 100, 117);
+}
+
+.navbar-brand {
+  margin-left: 15px;
+  margin-bottom: -19px;
+  margin-top: -15px;
+  font-size: 30px;
+  font-weight: 700;
+  transform: translateY(-3px);
+  color: rgb(252, 252, 252);
+  text-shadow: 0 0 3px rgb(59, 147, 248), 0 0 6px rgb(1, 198, 233),
+    0 0 3px rgb(1, 198, 233), 0 0 2px rgb(1, 198, 233),
+    0 0 12px rgb(1, 198, 233), 2px 5.5px 3px rgb(0, 0, 0);
+  /* text-shadow: 0px -40px 100px, 0px 0px 2px, rgb(162, 235, 252) 0px 0px 1em,
+    rgb(162, 235, 252) 0px 0px 0.3em, rgb(162, 235, 252) 0px 0px 0.1em,
+    rgb(0 0 0) -1px 7px 3px; */
+}
+
+.nav-item {
+  padding: 0 18px;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+/* navbar link item colors and hover color
+ */
+/* nav .navbar-nav li:nth-child(even) a {
+  color: rgb(255, 145, 222);
+} */
+nav .navbar-nav li a:hover {
+  color: rgb(248, 74, 193);
+}
+
+nav .navbar-nav li a {
+  color: rgb(85, 227, 252);
+  text-shadow: 0 3px 6px rgb(0 0 0);
+}
+
+.navbar-toggler {
+  margin-right: 15px;
+}
+
+.signature {
+  transform: translateY(25px);
+  padding: -10px 0px;
+}
+
+#signatureDiv {
+  padding-top: 25px;
+}
+
+.typedMessage {
+  padding-left: 40px;
+  padding-top: 30px;
+}
+
+.typedMessage h1 {
+  font-size: 50px;
+}
+
+@media screen and (min-width: 768px) {
+  .typedMessage {
+    padding-top: 90px;
+    align-content: flex-start;
+  }
+}
+
+@media (max-width: 576px) {
+  .typedMessage {
+    align-content: flex-start;
+  }
+}
+
+.textAndSig {
+  padding-top: 50px;
+  padding-bottom: 45px;
+}
+
+svg {
+  display: block;
+  margin: auto;
+}
+
+#message0 {
+  padding-top: 3%;
+}
+
+.contactMeBtn {
+  margin-top: 100px;
+  width: 50%;
+}
+
+.webgl {
+  position: static;
+  outline: none;
+  display: block;
+}
+
+h1 {
+  color: #f1f1f1;
+
+  font-weight: 700;
+}
+
+hr {
+  margin-left: 20%;
+  margin-right: 20%;
+  color: rgb(107, 225, 255);
+}
+
+.aboutMeSection {
+  padding: 70px 40px;
+}
+
+.projectSection {
+  padding: 70px 40px;
+}
+
+.projectImg {
+  max-width: 100%;
+  height: auto;
+  padding-top: 30px;
+}
+
+.contactSection {
+  padding-top: 80px;
+  margin-bottom: 80px;
+}
+
+.contact-form {
+  background-color: #152742;
+  color: rgb(69, 205, 240);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 15px;
+  padding: 20px;
+  padding-bottom: 30px;
+}
+
+#contactH1 {
+  font-weight: 200;
+  text-align: center;
+}
+
+::placeholder {
+  color: rgba(69, 206, 240, 0.445) !important;
+}
+
+.form-control:focus {
+  border-color: rgba(69, 206, 240, 0.884) !important;
+  box-shadow: inset 0 1px 1px rgba(69, 206, 240, 0.76),
+    0 0 8px rgba(69, 205, 240, 0.6) !important;
+  background-color: #22363f !important;
+  color: rgb(69, 205, 240);
+}
+
+input[type="text"],
+input[type="email"],
+textarea#contactInput.form-control {
+  background-color: #32515f;
+  border-color: rgb(69, 205, 240);
+  color: rgb(69, 205, 240);
+  margin-top: 30px;
+}
+
+.submitBtn {
+  margin-top: 20px;
+}
+
+/* widens button */
+.submitBtn .btn-outline-info {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.form-error-message {
+  background: #090 !important;
+}
+
+/* keeps form box from touching window edge on small window widths */
+@media (max-width: 576px) {
+  .contactSection {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+
+@media (min-width: 992px) {
+  .contactSection {
+    margin-left: 20%;
+    margin-right: 20%;
+  }
+}
+
+/* Caret */
+.mySpan {
+  background-color: #ff00b3;
+  color: #ff00b3;
+  display: inline-block;
+  animation: blinker 1s linear infinite, smoothCaret 0.03s ease-in-out;
+}
+/* more Caret */
+@keyframes smoothCaret {
+  0% {
+    -webkit-transform: translateX(-70%);
+    transform: translateX(-70%);
+  }
+  85% {
+    -webkit-transform: translateX(0%);
+    transform: translateX(0%);
+  }
+}
+/* caret pulse blink effect */
+@keyframes blinker {
+  25% {
+    opacity: 0;
+  }
+}
+
+/* signature animation */
+#signaturePath {
+  transform: translateY(5%);
+  padding-bottom: 40px;
+  stroke-dasharray: 895;
+  stroke-dashoffset: 895;
+  animation: sign 1.5s 3s linear forwards, turnOn 0.75s 4s forwards,
+    flicker 7s 5s linear infinite;
+  filter: 
+    /* Glow */ drop-shadow(0px 0px 4px rgb(251 72 196))
+    drop-shadow(0px 0px 3px rgb(251 72 196))
+    drop-shadow(0px 0px 1px rgb(251 72 196)) /* Shadow */
+    drop-shadow(9px 9px 1px rgb(0 0 0));
+}
+
+@keyframes sign {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* initial flicker of neon signature */
+@keyframes turnOn {
+  from {
+    opacity: 0.2;
+  }
+  10% {
+    opacity: 1;
+  }
+  20% {
+    opacity: 0.05;
+  }
+  30% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 0.1;
+  }
+  60% {
+    opacity: 0.95;
+  }
+  70% {
+    opacity: 0.15;
+  }
+  80% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0.3;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* continuous flicker of signature */
+@keyframes flicker {
+  from {
+    opacity: 1;
+  }
+
+  4% {
+    opacity: 0.9;
+  }
+
+  6% {
+    opacity: 0.7;
+  }
+
+  8% {
+    opacity: 0.95;
+  }
+
+  10% {
+    opacity: 0.8;
+  }
+
+  11% {
+    opacity: 0.92;
+  }
+
+  12% {
+    opacity: 1;
+  }
+
+  14% {
+    opacity: 0.9;
+  }
+
+  16% {
+    opacity: 0.98;
+  }
+
+  17% {
+    opacity: 0.85;
+  }
+
+  19% {
+    opacity: 0.93;
+  }
+
+  20% {
+    opacity: 0.99;
+  }
+
+  24% {
+    opacity: 1;
+  }
+
+  26% {
+    opacity: 0.94;
+  }
+
+  28% {
+    opacity: 0.98;
+  }
+
+  37% {
+    opacity: 0.93;
+  }
+
+  38% {
+    opacity: 0.5;
+  }
+
+  39% {
+    opacity: 0.96;
+  }
+
+  42% {
+    opacity: 1;
+  }
+
+  44% {
+    opacity: 0.97;
+  }
+
+  46% {
+    opacity: 0.94;
+  }
+
+  56% {
+    opacity: 0.9;
+  }
+
+  58% {
+    opacity: 0.8;
+  }
+
+  60% {
+    opacity: 0.99;
+  }
+
+  68% {
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 0.9;
+  }
+
+  72% {
+    opacity: 0.95;
+  }
+
+  93% {
+    opacity: 0.93;
+  }
+
+  95% {
+    opacity: 0.95;
+  }
+
+  97% {
+    opacity: 0.73;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
