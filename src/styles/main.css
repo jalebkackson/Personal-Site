@@ -33,11 +33,6 @@ body {
   font-size: 20px;
 }
 
-/* navbar link item colors and hover color
- */
-/* nav .navbar-nav li:nth-child(even) a {
-  color: rgb(255, 145, 222);
-} */
 nav .navbar-nav li a:hover {
   color: rgb(248, 74, 193);
 }
@@ -53,11 +48,7 @@ nav .navbar-nav li a {
 
 .signature {
   transform: translateY(25px);
-  padding: -10px 0px;
-}
-
-#signatureDiv {
-  padding-top: 25px;
+  transform: translateX(-30px);
 }
 
 .typedMessage {
@@ -66,7 +57,7 @@ nav .navbar-nav li a {
 }
 
 .typedMessage h1 {
-  font-size: 50px;
+  font-size: 40px;
 }
 
 @media screen and (min-width: 768px) {
@@ -232,15 +223,17 @@ textarea#contactInput.form-control {
 #signaturePath {
   transform: translateY(5%);
   padding-bottom: 40px;
-  stroke-dasharray: 895;
-  stroke-dashoffset: 895;
+  stroke-dasharray: 920;
+  stroke-dashoffset: 920;
   animation: sign 1.5s 3s linear forwards, turnOn 0.75s 4s forwards,
     flicker 7s 5s linear infinite;
   filter: 
-    /* Glow */ drop-shadow(0px 0px 4px rgb(251 72 196))
+    /* Glow */ 
+    drop-shadow(0px 0px 4px rgb(251 72 196))
     drop-shadow(0px 0px 3px rgb(251 72 196))
     drop-shadow(0px 0px 1px rgb(251 72 196)) /* Shadow */
-    drop-shadow(9px 9px 1px rgb(0 0 0));
+    drop-shadow(5px 6px 0px rgb(0 0 0));
+  
 }
 
 @keyframes sign {
@@ -258,7 +251,7 @@ textarea#contactInput.form-control {
     opacity: 1;
   }
   20% {
-    opacity: 0.05;
+    opacity: 0.0;
   }
   30% {
     opacity: 1;
@@ -386,7 +379,7 @@ textarea#contactInput.form-control {
   }
 
   70% {
-    opacity: 0.9;
+    opacity: 0.3;
   }
 
   72% {
