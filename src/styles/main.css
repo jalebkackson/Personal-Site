@@ -46,62 +46,46 @@ nav .navbar-nav li a {
   margin-right: 15px;
 }
 
-.signature {
-  transform: translateY(25px);
-  transform: translateX(-30px);
-}
-
 .typedMessage {
   padding-left: 40px;
-  padding-top: 30px;
-}
-
-.typedMessage h1 {
-  font-size: 40px;
-}
-
-@media screen and (min-width: 768px) {
-  .typedMessage {
-    padding-top: 90px;
-    align-content: flex-start;
-  }
+  padding-top: 13rem;
+  padding-bottom: 3rem;
 }
 
 @media (max-width: 576px) {
   .typedMessage {
     align-content: flex-start;
+    transform: translateX(-7%);
   }
 }
 
-.textAndSig {
-  padding-top: 50px;
-  padding-bottom: 45px;
+@media screen and (max-width: 799px) {
+  #message0,
+  #message1,
+  #message2 {
+    font-size: 10vw;
+  }
 }
 
-svg {
-  display: block;
-  margin: auto;
-}
-
-#message0 {
-  padding-top: 3%;
+@media screen and (min-width: 800px) {
+  #message0,
+  #message1,
+  #message2 {
+    font-size: 78px;
+  }
 }
 
 .contactMeBtn {
-  margin-top: 100px;
+  margin-top: 7rem;
+  margin-bottom: 6rem;
   width: 50%;
 }
 
-.webgl {
+canvas.webgl {
   position: static;
   outline: none;
   display: block;
-}
-
-h1 {
-  color: #f1f1f1;
-
-  font-weight: 700;
+  margin-bottom: 6rem;
 }
 
 hr {
@@ -110,18 +94,89 @@ hr {
   color: rgb(107, 225, 255);
 }
 
+h1 {
+  color: #f1f1f1;
+  font-weight: 700;
+}
+
 .aboutMeSection {
-  padding: 70px 40px;
+  padding: 100px 100px;
+  font-size: 18px;
+  /* margin-right: 20px; */
+}
+
+/* about me p */
+div.col-md p {
+  margin-top: 2rem;
+  text-align: left;
+  /* starting position for animation */
+  opacity: 0%;
+}
+
+@media (max-width: 500px) {
+  div.col-md p {
+    margin: 0 -3rem 0 -3rem;
+  }
+}
+
+/* slide animation class for <p> */
+.slide-in-from-right {
+  animation: 1s 0s 1 slideInFromRight forwards;
+}
+
+/* animation for <p> */
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(99%);
+    opacity: 0%;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 100%;
+  }
+}
+
+svg {
+  display: block;
+  margin: auto;
+  transform: translateY(2vw);
+}
+
+@media (max-width: 510px) {
+  svg {
+    transform: translateX(-3rem);
+  }
 }
 
 .projectSection {
-  padding: 70px 40px;
+  padding: 100px 10px;
+}
+
+.projectSection h1 {
+  padding-bottom: 70px;
 }
 
 .projectImg {
   max-width: 100%;
-  height: auto;
-  padding-top: 30px;
+  height: 30vw;
+  margin-top: 40px;
+  border-radius: 10px;
+  opacity: 0%;
+}
+
+.slide-in-from-bottom {
+  animation: 1s 0s 1 slideInFromBottom forwards;
+}
+
+@keyframes slideInFromBottom {
+  0% {
+    transform: translateY(99%);
+    opacity: 0%;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 100%;
+  }
 }
 
 .contactSection {
@@ -175,10 +230,6 @@ textarea#contactMessage.form-control {
   padding-right: 40px;
 }
 
-.form-error-message {
-  background: #090 !important;
-}
-
 /* keeps form box from touching window edge on small window widths */
 @media (max-width: 576px) {
   .contactSection {
@@ -199,15 +250,15 @@ textarea#contactMessage.form-control {
   background-color: #ff00b3;
   color: #ff00b3;
   display: inline-block;
-  animation: blinker 1s linear infinite, smoothCaret 0.03s ease-in-out;
+  animation: blinker 1s linear infinite, smoothCaret 0.2s ease-in-out;
 }
-/* more Caret */
+/* Caret smooth movement animation*/
 @keyframes smoothCaret {
   0% {
-    -webkit-transform: translateX(-70%);
-    transform: translateX(-70%);
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
   }
-  85% {
+  100% {
     -webkit-transform: translateX(0%);
     transform: translateX(0%);
   }
@@ -225,13 +276,16 @@ textarea#contactMessage.form-control {
   padding-bottom: 40px;
   stroke-dasharray: 920;
   stroke-dashoffset: 920;
-  animation: sign 1.5s 3s linear forwards, turnOn 0.75s 4s forwards,
-    flicker 7s 5s linear infinite;
-  filter: 
-    /* Glow */ drop-shadow(0px 0px 4px rgb(251 72 196))
+  filter:
+  /* Glow */ drop-shadow(0px 0px 4px rgb(251 72 196))
     drop-shadow(0px 0px 3px rgb(251 72 196))
     drop-shadow(0px 0px 1px rgb(251 72 196)) /* Shadow */
     drop-shadow(5px 6px 0px rgb(0 0 0));
+}
+
+.signature-animation-toggle {
+  animation: sign 1.5s 0s linear forwards, turnOn 0.8s 1.8s forwards,
+    flicker 4s 5s linear infinite;
 }
 
 @keyframes sign {
@@ -341,7 +395,7 @@ textarea#contactMessage.form-control {
   }
 
   38% {
-    opacity: 0.5;
+    opacity: 0.8;
   }
 
   39% {
@@ -377,7 +431,7 @@ textarea#contactMessage.form-control {
   }
 
   70% {
-    opacity: 0.3;
+    opacity: 0.8;
   }
 
   72% {
@@ -399,4 +453,9 @@ textarea#contactMessage.form-control {
   to {
     opacity: 1;
   }
+}
+
+html {
+  visibility: visible;
+  opacity: 1;
 }

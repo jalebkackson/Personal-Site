@@ -3,7 +3,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/main.css";
 import * as THREE from "three";
 import empty from "./assets/images/empty.png";
-import { getElements, getElementsByTagType } from "domutils";
+import { getElements, getElementsByTagType, getElementById } from "domutils";
+import { FontLoader } from "/node_modules/three/examples/jsm/loaders/FontLoader";
+import { TextGeometry } from "/node_modules/three/examples/jsm/geometries/TextGeometry.js";
+import CANNON from "cannon";
 require("webpack-hot-middleware/client?reload=true");
 
 /**
@@ -16,72 +19,184 @@ const canvas = document.querySelector("canvas.webgl");
 const scene = new THREE.Scene();
 
 /**
- * Textures
+ * Light
  */
-const loadingManager = new THREE.LoadingManager();
-loadingManager.onStart = () => {
-  console.log("loadingManager: loading started");
-};
-loadingManager.onLoaded = () => {
-  console.log("loadingManager: loading finished");
-};
-loadingManager.onProgress = () => {
-  console.log("loadingManager: loading progressing");
-};
-loadingManager.onError = () => {
-  console.log("loadingManager: loading error");
-};
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.45);
+// blue light
+const directionalLightB = new THREE.DirectionalLight(0x00fffc, 1);
+directionalLightB.position.set(-1, -2, 1.5);
+// pink light
+const pointLightP = new THREE.PointLight(0xff0099, 0.0);
+pointLightP.position.set(0, 6, -1);
+pointLightP.castShadow = true;
 
-const textureLoader = new THREE.TextureLoader(loadingManager);
-
-// textures
-// const colorTexture = textureLoader.load(
-//   "/textures/Brick_Wall_017_basecolor.jpg"
-// );
-// colorTexture.wrapS = THREE.MirroredRepeatWrapping;
-// colorTexture.wrapT = THREE.MirroredRepeatWrapping;
-// colorTexture.repeat.x = 0.5;
-// colorTexture.repeat.y = 0.5;
-
-// colorTexture.generateMipmaps = false;
-// colorTexture.minFilter = THREE.NearestFilter;
-// colorTexture.magFilter = THREE.NearestFilter;
-
-// const ambientOcclusionTexture = textureLoader.load(
-//   "/textures/Brick_Wall_017_ambientOcclusion.jpg"
-// );
-// const heightTexture = textureLoader.load("/textures/Brick_Wall_017_height.jpg");
-// const normalTexture = textureLoader.load("/textures/Brick_Wall_017_normal.jpg");
-// const roughnessTexture = textureLoader.load(
-//   "/textures/Brick_Wall_017_roughness.jpg"
-// );
-// const materialTexture = textureLoader.load(
-//   "/textures/Brick_Wall_017_Material.jpg"
-// );
+scene.add(ambientLight, directionalLightB, pointLightP);
 
 /**
- * Object
+ *  Text ******
  */
-const geometry = new THREE.BoxBufferGeometry(1.5, 1.5, 1.5);
-const material = new THREE.MeshBasicMaterial({
-  wireframe: true,
-  color: 0x5bc0de
+
+const fontLoader = new FontLoader();
+
+fontLoader.load("assets/fonts/helvetiker_regular.typeface.json", font => {
+  const javascript = new TextGeometry("Javascript", {
+    font: font,
+    size: 0.3,
+    height: 0.2,
+    curveSegments: 2
+  });
+  const hTML = new TextGeometry("html", {
+    font: font,
+    size: 0.3,
+    height: 0.2,
+    curveSegments: 2
+  });
+  const cSS = new TextGeometry("css", {
+    font: font,
+    size: 0.3,
+    height: 0.2,
+    curveSegments: 2
+  });
+  const bootstrap = new TextGeometry("Bootstrap", {
+    font: font,
+    size: 0.3,
+    height: 0.2,
+    curveSegments: 2
+  });
+  const threejs = new TextGeometry("Three.js", {
+    font: font,
+    size: 0.3,
+    height: 0.2,
+    curveSegments: 2
+  });
+  const npm = new TextGeometry("npm", {
+    font: font,
+    size: 0.3,
+    height: 0.2,
+    curveSegments: 2
+  });
+  const jSON = new TextGeometry("JSON", {
+    font: font,
+    size: 0.3,
+    height: 0.2,
+    curveSegments: 2
+  });
+  const git = new TextGeometry("git", {
+    font: font,
+    size: 0.3,
+    height: 0.2,
+    curveSegments: 2
+  });
+  const expressjs = new TextGeometry("Express.js", {
+    font: font,
+    size: 0.3,
+    height: 0.2,
+    curveSegments: 2
+  });
+  const webpack = new TextGeometry("webpack", {
+    font: font,
+    size: 0.3,
+    height: 0.2,
+    curveSegments: 2
+  });
+  const nodejs = new TextGeometry("node.js", {
+    font: font,
+    size: 0.3,
+    height: 0.2,
+    curveSegments: 2
+  });
+
+  const textMaterial = new THREE.MeshStandardMaterial();
+  // 3D Meshes
+  const js3D = new THREE.Mesh(javascript, textMaterial);
+  const hTML3D = new THREE.Mesh(hTML, textMaterial);
+  const cSS3D = new THREE.Mesh(cSS, textMaterial);
+  const bootstrap3D = new THREE.Mesh(bootstrap, textMaterial);
+  const threejs3D = new THREE.Mesh(threejs, textMaterial);
+  const npm3D = new THREE.Mesh(npm, textMaterial);
+  const jSON3D = new THREE.Mesh(jSON, textMaterial);
+  const git3D = new THREE.Mesh(git, textMaterial);
+  const expressjs3D = new THREE.Mesh(expressjs, textMaterial);
+  const webpack3D = new THREE.Mesh(webpack, textMaterial);
+  const nodejs3D = new THREE.Mesh(nodejs, textMaterial);
+
+  // array of all TextGeometries
+  const textGeoms = [
+    javascript,
+    hTML,
+    cSS,
+    bootstrap,
+    threejs,
+    npm,
+    jSON,
+    git,
+    expressjs,
+    webpack,
+    nodejs
+  ];
+
+  const meshes3D = [
+    js3D,
+    hTML3D,
+    cSS3D,
+    bootstrap3D,
+    threejs3D,
+    npm3D,
+    jSON3D,
+    git3D,
+    expressjs3D,
+    webpack3D,
+    nodejs3D
+  ];
+
+  textGeoms.forEach(i => {
+    i.center();
+  });
+  meshes3D.forEach(i => {
+    i.receiveShadow = true;
+    i.castShadow = true;
+  });
+
+  // 3D Text Positions
+  hTML3D.position.set(-1.4, 0.8, 0);
+  cSS3D.position.set(-0.5, 0.8, 0);
+  js3D.position.set(0.9, 0.8, 0);
+  bootstrap3D.position.set(-1.3, 0.1, 0);
+  threejs3D.position.set(0.5, 0.1, 0);
+  npm3D.position.set(1.8, 0.1, 0);
+  jSON3D.position.set(-1.4, -0.6, 0);
+  git3D.position.set(-0.2, -0.6, 0);
+  webpack3D.position.set(1.2, -0.6, 0);
+  expressjs3D.position.set(-0.7, -1.3, 0);
+  nodejs3D.position.set(1.2, -1.3, 0);
+
+  scene.add(
+    js3D,
+    hTML3D,
+    cSS3D,
+    bootstrap3D,
+    threejs3D,
+    npm3D,
+    jSON3D,
+    git3D,
+    expressjs3D,
+    webpack3D,
+    nodejs3D
+  );
 });
-const mesh = new THREE.Mesh(geometry, material);
-scene.add(mesh);
 
 /**
- * Sizes
+ * Window Sizes
  */
 const sizes = {
-  width: window.innerWidth * 0.9,
-  height: window.innerHeight * 0.5
+  width: window.innerWidth * 0.94,
+  height: window.innerHeight * 0.37
 };
 
 window.addEventListener("resize", () => {
   // Update sizes
-  sizes.width = window.innerWidth * 0.9;
-  sizes.height = window.innerHeight * 0.5;
+  sizes.width = window.innerWidth * 0.94;
+  sizes.height = window.innerHeight * 0.37;
 
   // Update camera
   camera.aspect = sizes.width / sizes.height;
@@ -97,66 +212,62 @@ window.addEventListener("resize", () => {
  */
 // Base camera
 const camera = new THREE.PerspectiveCamera(
-  75,
+  45,
   sizes.width / sizes.height,
-  0.1,
-  100
+  1,
+  1000
 );
 camera.position.x = 0;
-camera.position.y = 0;
-camera.position.z = 3;
+camera.position.y = 2;
+camera.position.z = 4;
+camera.lookAt(0, 0, 0);
 scene.add(camera);
 
 /**
  * Renderer
  */
 const renderer = new THREE.WebGLRenderer({
-  canvas: canvas
+  canvas: canvas,
+  antialias: true
 });
 renderer.setSize(sizes.width, sizes.height);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+renderer.shadowMap.enabled = true;
+// set background to clear
+renderer.setClearColor(0xffffff, 0);
 
-/**
- * Animate
- */
+// /**
+//  * Animate
+//  */
 const clock = new THREE.Clock();
 
 const tick = () => {
   const elapsedTime = clock.getElapsedTime();
-
-  mesh.rotation.x += 0.01;
-  mesh.rotation.y += 0.01;
-
-  // set background to clear
-  renderer.setClearColor(0xffffff, 0);
 
   // Render
   renderer.render(scene, camera);
 
   // Call tick again on the next frame
   window.requestAnimationFrame(tick);
+
+  // 3D Text Flicker
+  const span = document.getElementById("mySpan");
+  const spanOpacity = window.getComputedStyle(span).opacity;
+
+  pointLightP.intensity = spanOpacity * 0.85;
 };
 
 tick();
 
 /**
  *
- *
- *
- *
- *
- *
- *
- *
+ *  TYPEWRITER
  *
  */
-// *** TYPEWRITER STUFF
-let messageArray = ["Hey", "I'm Caleb", "A Web Developer"];
+let messageArray = ["Hey", "I'm Caleb,", "A Web Developer"];
 var textPosition = 0;
 // lower = faster
-var speed = 70;
-
-let hey = "hey".substring(0, textPosition);
+var speed = 100;
 
 var message0 = document.querySelector("#message0");
 var message1 = document.querySelector("#message1");
@@ -165,44 +276,86 @@ var message2 = document.querySelector("#message2");
 const typewriter = () => {
   message0.innerHTML =
     messageArray[0].substring(0, textPosition) +
-    '<span class="mySpan">..</span>';
+    '<span id="mySpan" class="mySpan">||</span>';
 
   if (textPosition++ != messageArray[0].length) {
     setTimeout(typewriter, speed);
   } else {
     message0.innerHTML = messageArray[0];
     textPosition = 0;
+    typewriter2();
   }
 };
 
 const typewriter2 = () => {
   message1.innerHTML =
     messageArray[1].substring(0, textPosition) +
-    '<span class="mySpan">..</span>';
+    '<span id="mySpan" class="mySpan">||</span>';
 
   if (textPosition++ != messageArray[1].length) {
     setTimeout(typewriter2, speed);
   } else {
     message1.innerHTML = messageArray[1];
     textPosition = 0;
+    typewriter3();
   }
 };
 
 const typewriter3 = () => {
   message2.innerHTML =
     messageArray[2].substring(0, textPosition) +
-    '<span class="mySpan">..</span>';
+    '<span id="mySpan" class="mySpan">_</span>';
 
   if (textPosition++ != messageArray[2].length) {
     setTimeout(typewriter3, speed);
   }
 };
-
 window.addEventListener("load", typewriter);
-setTimeout(typewriter2, 800);
-setTimeout(typewriter3, 1600);
 
-// contact form
+/**
+ *
+ *  Observer style togglers
+ *
+ */
+// observer for about me
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      // add animation class to svg path
+      document
+        .querySelector("#signaturePath")
+        .classList.add("signature-animation-toggle");
+
+      // add slide animation to about-me <p>
+      entry.target.classList.add("slide-in-from-right");
+    }
+  });
+});
+// tell observer what to track (p in about me)
+observer.observe(document.querySelector("div.col-md p"));
+
+// observer for projects
+const projAnimation = (entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("slide-in-from-bottom");
+    }
+  });
+};
+const projObserver = new IntersectionObserver(projAnimation);
+
+const pElements = document.querySelectorAll(".projectImg");
+// tell observer what to track (project images)
+pElements.forEach(element => {
+  projObserver.observe(element);
+});
+
+/**
+ *
+ *
+ *
+ * EMAIL Contact Form
+ */
 const contactForm = document.querySelector(".contact-form");
 
 let name = document.getElementById("name");

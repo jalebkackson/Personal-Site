@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <style>
+      html {
+        visibility: hidden;
+        opacity: 0;
+      }
+    </style>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link
+    <!-- <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
       integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
       crossorigin="anonymous"
-    />
+    /> -->
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
   <body>
@@ -30,13 +36,13 @@
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item ms-auto">
-              <a class="nav-link" href="">About me</a>
+              <a class="nav-link" href="#aboutMe">About me</a>
             </li>
             <li class="nav-item ms-auto">
-              <a class="nav-link" href="">Projects</a>
+              <a class="nav-link" href="#projects">Projects</a>
             </li>
             <li class="nav-item ms-auto">
-              <a class="nav-link" href="">Contact Me</a>
+              <a class="nav-link" href="#contactMe">Contact Me</a>
             </li>
             <li class="nav-item ms-auto">
               <a class="nav-link" href="">Resume</a>
@@ -47,47 +53,17 @@
     </nav>
 
     <div class="container-fluid">
-      <div class="row textAndSig">
-        <div class="col-lg-6 order-lg-2 justify-content-center signature">
-          <div id="signatureDiv" class="mx-auto-col">
-            <svg
-              version="1.1"
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              width="450"
-              height="320"
-              viewBox="0 300 218 200"
-            >
-              <g
-                fill-opacity="0"
-                fill="#000000"
-                stroke="white"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                style="mix-blend-mode: normal"
-              >
-                <path
-                  d="M38.81801,378.42808c-0.28945,0.35561 1.26951,-7.12077 1.39523,-8.65032c0.24709,-3.00633 2.61058,-20.60761 -5.39063,-17.47612c-6.53317,2.55693 -10.98549,9.53279 -14.20585,14.96278c-9.02125,15.21113 -14.13324,35.70543 -14.45955,52.95416c-0.15965,8.43915 0.80026,17.03873 8.49819,22.67795c15.56713,11.40389 35.20063,-3.10948 45.53483,-13.32622c2.07523,-2.05164 11.01471,-10.6445 7.864,-14.37826c-2.322,-2.75171 -8.32219,3.8747 -9.25915,4.79275c-3.93103,3.85172 -9.48225,13.71707 -4.81989,19.17104c1.49896,1.75346 5.66918,-0.17919 6.9761,-0.81829c3.8916,-1.90308 12.86492,-11.24522 10.21055,-16.13172c-0.15259,-0.28091 -0.07375,0.62486 -0.12691,0.93517c-0.27278,1.59217 -0.61242,3.18277 -0.69764,4.79275c-0.22472,4.24495 -2.37662,11.90879 7.08004,11.05478c7.48447,-1.01208 14.53802,-4.37042 18.53382,-11.04922c7.37441,-14.79107 13.07344,-28.03244 17.63533,-43.47864c3.38843,-12.23639 6.81415,-26.17983 6.12035,-30.12661c-2.13337,-13.61366 -10.63178,8.41788 -11.88888,11.70295c-5.73247,14.98021 -8.48394,30.31978 -12.75308,45.72262c-1.4136,5.10023 -5.93047,19.55944 1.52794,22.60344c10.50031,4.33308 21.22612,2.21642 28.26808,-10.13755c2.03309,-4.68362 0.91681,-7.60801 0.08025,-9.15042c-1.27832,-2.35686 -3.8604,2.0839 -4.8375,4.61747c-1.08836,3.62693 -2.21534,7.39132 -1.12393,11.16359c1.4213,4.91252 9.34569,5.60073 17.60426,-0.35541c15.93579,-12.43633 19.52962,-25.58499 27.85526,-47.8228c2.03491,-7.35288 8.8406,-24.69116 8.47728,-33.7467c-2.49021,-1.2239 -7.13463,6.78268 -9.13907,11.30924c-2.08796,4.32856 -4.39704,10.36818 -6.36573,15.20669c-0.43773,1.07581 -0.87079,2.16215 -1.2981,3.25769c-4.56975,11.71572 -8.48221,24.48293 -10.41354,36.6704c-1.10484,4.7428 -1.59586,9.97547 -1.98687,15.71468c0.16703,0.92354 0.39364,1.04483 0.88791,1.75345c1.87498,2.68813 -0.53791,2.31118 -0.38056,-0.05845c0.0753,-1.1339 -0.01697,-2.0137 0.30565,-3.11012c0.31852,-1.08247 2.6873,-5.31729 3.16121,-5.97947c3.47022,-8.27902 11.37971,-17.24866 20.94949,-14.81573c5.88592,1.49638 9.42818,13.4043 5.01011,17.47605c-5.86341,5.40379 -17.83649,7.88454 -27.09278,4.6939c-1.44497,0.33287 3.09283,1.71301 4.38532,2.27486c5.38937,2.51559 14.89059,0.99913 21.05081,-0.73957c7.99359,-2.25615 29.3539,-11.30317 36.91756,-15.63936c2.77067,-1.5884 10.79729,-5.23016 13.13074,-8.15167"
-                  id="signaturePath"
-                />
-              </g>
-            </svg>
-          </div>
-        </div>
-
-        <div class="col-lg-6 order-lg-1 typedMessage">
-          <h1 id="message0"></h1>
-          <h1 id="message1"><br /></h1>
-          <h1 id="message2"><br /></h1>
-        </div>
+      <div class="typedMessage">
+        <h1 id="message0"><span id="mySpan"></span></h1>
+        <h1 id="message1"><br /></h1>
+        <h1 id="message2"><br /></h1>
       </div>
     </div>
 
     <div class="container contactBtnContainer">
       <div class="text-center">
         <button type="button" class="btn btn-outline-info btn-lg contactMeBtn">
-          Contact Me
+          <a class="nav-link" href="#contactMe">Contact Me</a>
         </button>
       </div>
     </div>
@@ -100,18 +76,51 @@
 
     <hr />
 
-    <div class="container-fluid aboutMeSection text-center">
+    <div class="container-fluid text-center aboutMeSection" id="aboutMe">
       <h1>About Me</h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat,
-        fugiat sapiente quidem ex dolor alias ab tempore nesciunt rem quis cum
-        soluta ullam, vero, eos aut. Ipsum quis aspernatur laborum.
-      </p>
+      <div class="row">
+        <div id="signatureDiv" class="col-md">
+          <svg
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            width="310"
+            height="250"
+            viewBox="0 300 230 200"
+          >
+            <g
+              fill-opacity="0"
+              fill="#000000"
+              stroke="white"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              style="mix-blend-mode: normal"
+            >
+              <path
+                d="M38.81801,378.42808c-0.28945,0.35561 1.26951,-7.12077 1.39523,-8.65032c0.24709,-3.00633 2.61058,-20.60761 -5.39063,-17.47612c-6.53317,2.55693 -10.98549,9.53279 -14.20585,14.96278c-9.02125,15.21113 -14.13324,35.70543 -14.45955,52.95416c-0.15965,8.43915 0.80026,17.03873 8.49819,22.67795c15.56713,11.40389 35.20063,-3.10948 45.53483,-13.32622c2.07523,-2.05164 11.01471,-10.6445 7.864,-14.37826c-2.322,-2.75171 -8.32219,3.8747 -9.25915,4.79275c-3.93103,3.85172 -9.48225,13.71707 -4.81989,19.17104c1.49896,1.75346 5.66918,-0.17919 6.9761,-0.81829c3.8916,-1.90308 12.86492,-11.24522 10.21055,-16.13172c-0.15259,-0.28091 -0.07375,0.62486 -0.12691,0.93517c-0.27278,1.59217 -0.61242,3.18277 -0.69764,4.79275c-0.22472,4.24495 -2.37662,11.90879 7.08004,11.05478c7.48447,-1.01208 14.53802,-4.37042 18.53382,-11.04922c7.37441,-14.79107 13.07344,-28.03244 17.63533,-43.47864c3.38843,-12.23639 6.81415,-26.17983 6.12035,-30.12661c-2.13337,-13.61366 -10.63178,8.41788 -11.88888,11.70295c-5.73247,14.98021 -8.48394,30.31978 -12.75308,45.72262c-1.4136,5.10023 -5.93047,19.55944 1.52794,22.60344c10.50031,4.33308 21.22612,2.21642 28.26808,-10.13755c2.03309,-4.68362 0.91681,-7.60801 0.08025,-9.15042c-1.27832,-2.35686 -3.8604,2.0839 -4.8375,4.61747c-1.08836,3.62693 -2.21534,7.39132 -1.12393,11.16359c1.4213,4.91252 9.34569,5.60073 17.60426,-0.35541c15.93579,-12.43633 19.52962,-25.58499 27.85526,-47.8228c2.03491,-7.35288 8.8406,-24.69116 8.47728,-33.7467c-2.49021,-1.2239 -7.13463,6.78268 -9.13907,11.30924c-2.08796,4.32856 -4.39704,10.36818 -6.36573,15.20669c-0.43773,1.07581 -0.87079,2.16215 -1.2981,3.25769c-4.56975,11.71572 -8.48221,24.48293 -10.41354,36.6704c-1.10484,4.7428 -1.59586,9.97547 -1.98687,15.71468c0.16703,0.92354 0.39364,1.04483 0.88791,1.75345c1.87498,2.68813 -0.53791,2.31118 -0.38056,-0.05845c0.0753,-1.1339 -0.01697,-2.0137 0.30565,-3.11012c0.31852,-1.08247 2.6873,-5.31729 3.16121,-5.97947c3.47022,-8.27902 11.37971,-17.24866 20.94949,-14.81573c5.88592,1.49638 9.42818,13.4043 5.01011,17.47605c-5.86341,5.40379 -17.83649,7.88454 -27.09278,4.6939c-1.44497,0.33287 3.09283,1.71301 4.38532,2.27486c5.38937,2.51559 14.89059,0.99913 21.05081,-0.73957c7.99359,-2.25615 29.3539,-11.30317 36.91756,-15.63936c2.77067,-1.5884 10.79729,-5.23016 13.13074,-8.15167"
+                id="signaturePath"
+              />
+            </g>
+          </svg>
+        </div>
+        <div class="col-md" id="about-text">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat,
+            fugiat sapiente quidem ex dolor alias ab tempore nesciunt rem quis
+            cum soluta ullam, vero, eos aut. Ipsum quis aspernatur laborum.
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam
+            sed soluta quia ducimus facilis aut error molestiae? Et expedita
+            quia, veniam obcaecati perspiciatis nihil sed! Ad quaerat esse culpa
+            adipisci.
+          </p>
+        </div>
+      </div>
     </div>
 
     <hr />
 
-    <div class="container-fluid projectSection text-center">
+    <div class="container-fluid projectSection text-center" id="projects">
       <h1>Projects</h1>
       <div class="row">
         <div class="col-6">
@@ -147,7 +156,7 @@
 
     <hr />
 
-    <div class="contactSection">
+    <div class="contactSection" id="contactMe">
       <form
         class="contact-form container"
         id="contact-form"
