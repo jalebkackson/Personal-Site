@@ -38,72 +38,72 @@ scene.add(ambientLight, directionalLightB, pointLightP);
 
 const fontLoader = new FontLoader();
 
-fontLoader.load("assets/fonts/helvetiker_regular.typeface.json", font => {
+fontLoader.load("assets/fonts/helvetiker_regular.typeface.json", (font) => {
   const javascript = new TextGeometry("Javascript", {
     font: font,
     size: 0.3,
     height: 0.2,
-    curveSegments: 2
+    curveSegments: 2,
   });
   const hTML = new TextGeometry("html", {
     font: font,
     size: 0.3,
     height: 0.2,
-    curveSegments: 2
+    curveSegments: 2,
   });
   const cSS = new TextGeometry("css", {
     font: font,
     size: 0.3,
     height: 0.2,
-    curveSegments: 2
+    curveSegments: 2,
   });
   const bootstrap = new TextGeometry("Bootstrap", {
     font: font,
     size: 0.3,
     height: 0.2,
-    curveSegments: 2
+    curveSegments: 2,
   });
   const threejs = new TextGeometry("Three.js", {
     font: font,
     size: 0.3,
     height: 0.2,
-    curveSegments: 2
+    curveSegments: 2,
   });
   const npm = new TextGeometry("npm", {
     font: font,
     size: 0.3,
     height: 0.2,
-    curveSegments: 2
+    curveSegments: 2,
   });
   const jSON = new TextGeometry("JSON", {
     font: font,
     size: 0.3,
     height: 0.2,
-    curveSegments: 2
+    curveSegments: 2,
   });
   const git = new TextGeometry("git", {
     font: font,
     size: 0.3,
     height: 0.2,
-    curveSegments: 2
+    curveSegments: 2,
   });
   const expressjs = new TextGeometry("Express.js", {
     font: font,
     size: 0.3,
     height: 0.2,
-    curveSegments: 2
+    curveSegments: 2,
   });
   const webpack = new TextGeometry("webpack", {
     font: font,
     size: 0.3,
     height: 0.2,
-    curveSegments: 2
+    curveSegments: 2,
   });
   const nodejs = new TextGeometry("node.js", {
     font: font,
     size: 0.3,
     height: 0.2,
-    curveSegments: 2
+    curveSegments: 2,
   });
 
   const textMaterial = new THREE.MeshStandardMaterial();
@@ -132,7 +132,7 @@ fontLoader.load("assets/fonts/helvetiker_regular.typeface.json", font => {
     git,
     expressjs,
     webpack,
-    nodejs
+    nodejs,
   ];
 
   const meshes3D = [
@@ -146,13 +146,13 @@ fontLoader.load("assets/fonts/helvetiker_regular.typeface.json", font => {
     git3D,
     expressjs3D,
     webpack3D,
-    nodejs3D
+    nodejs3D,
   ];
 
-  textGeoms.forEach(i => {
+  textGeoms.forEach((i) => {
     i.center();
   });
-  meshes3D.forEach(i => {
+  meshes3D.forEach((i) => {
     i.receiveShadow = true;
     i.castShadow = true;
   });
@@ -190,7 +190,7 @@ fontLoader.load("assets/fonts/helvetiker_regular.typeface.json", font => {
  */
 const sizes = {
   width: window.innerWidth * 0.94,
-  height: window.innerHeight * 0.37
+  height: window.innerHeight * 0.37,
 };
 
 window.addEventListener("resize", () => {
@@ -228,7 +228,7 @@ scene.add(camera);
  */
 const renderer = new THREE.WebGLRenderer({
   canvas: canvas,
-  antialias: true
+  antialias: true,
 });
 renderer.setSize(sizes.width, sizes.height);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -267,7 +267,7 @@ tick();
 let messageArray = ["Hey", "I'm Caleb,", "A Web Developer"];
 var textPosition = 0;
 // lower = faster
-var speed = 100;
+var speed = 75;
 
 var message0 = document.querySelector("#message0");
 var message1 = document.querySelector("#message1");
@@ -318,8 +318,8 @@ window.addEventListener("load", typewriter);
  *
  */
 // observer for about me
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
     if (entry.isIntersecting) {
       // add animation class to svg path
       document
@@ -336,7 +336,7 @@ observer.observe(document.querySelector("div.col-md p"));
 
 // observer for projects
 const projAnimation = (entries, observer) => {
-  entries.forEach(entry => {
+  entries.forEach((entry) => {
     if (entry.isIntersecting) {
       entry.target.classList.add("slide-in-from-bottom");
     }
@@ -346,7 +346,7 @@ const projObserver = new IntersectionObserver(projAnimation);
 
 const pElements = document.querySelectorAll(".projectImg");
 // tell observer what to track (project images)
-pElements.forEach(element => {
+pElements.forEach((element) => {
   projObserver.observe(element);
 });
 
@@ -362,19 +362,19 @@ let name = document.getElementById("name");
 let email = document.getElementById("email");
 let message = document.getElementById("contactMessage");
 
-contactForm.addEventListener("submit", e => {
+contactForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
   let formData = {
     name: name.value,
     email: email.value,
-    message: message.value
+    message: message.value,
   };
 
   let xhr = new XMLHttpRequest();
   xhr.open("POST", "/");
   xhr.setRequestHeader("content-type", "application/json");
-  xhr.onload = function() {
+  xhr.onload = function () {
     console.log(xhr.responseText);
 
     if (xhr.responseText == "success") {

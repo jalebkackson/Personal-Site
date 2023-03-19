@@ -162,6 +162,7 @@ svg {
   margin-top: 40px;
   border-radius: 10px;
   opacity: 0%;
+  box-shadow: 0 1px 1px rgba(69, 206, 240, 0.76);
 }
 
 .slide-in-from-bottom {
@@ -250,7 +251,7 @@ textarea#contactMessage.form-control {
   background-color: #ff00b3;
   color: #ff00b3;
   display: inline-block;
-  animation: blinker 1s linear infinite, smoothCaret 0.2s ease-in-out;
+  animation: blinker 1s linear infinite, smoothCaret 0.18s;
 }
 /* Caret smooth movement animation*/
 @keyframes smoothCaret {
