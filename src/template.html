@@ -10,15 +10,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <!-- <link
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;200;300;400;500;600;700&display=swap"
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
-      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
-      crossorigin="anonymous"
-    /> -->
+    />
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
+
   <body>
+    <div class="bg"></div>
     <nav class="navbar navbar-expand-lg sticky-top navbar-dark">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Caleb Jackson</a>
@@ -71,13 +73,14 @@
     <div class="container-fluid">
       <div class="justify-content-center">
         <canvas class="webgl"></canvas>
+        <!-- <div class="loading-bar"></div> -->
       </div>
     </div>
 
     <hr />
 
     <div class="container-fluid text-center aboutMeSection" id="aboutMe">
-      <h1>About Me</h1>
+      <h1 data-value="ABOUT ME" id="hacker">ABOUT ME</h1>
       <div class="row">
         <div id="signatureDiv" class="col-md">
           <svg
@@ -121,41 +124,44 @@
     <hr />
 
     <div class="container-fluid projectSection text-center" id="projects">
-      <h1>Projects</h1>
+      <h1 data-value="MY WORK" id="hacker">MY WORK</h1>
       <div class="row">
-        <div class="col-6">
+        <div class="col-12 col-md-6 project-item">
           <img
             class="projectImg"
-            src="assets/images/empty.png"
+            src="assets/images/GroceryAppSS.png"
             alt="empty image"
           />
-          <p>
-            A shared grocery list app I made with a database for my girlfriend
-            and I
-          </p>
-          <p>using EJS, Mongodb, Mongoose, Node.js, and Express.js</p>
+          <br />
           <a href="https://grocery-list-app-2023-production.up.railway.app/"
             >Project Link</a
           >
           <a href="https://github.com/jalebkackson/grocery-list-app-2023"
             >Github Repo</a
           >
+          <p>
+            An app I made for my girlfriend so we can collaborate on the same
+            grocery list from our mobile devices. Built using Mongodb, Mongoose,
+            Node.js, and Express.js, & EJS
+          </p>
         </div>
-        <div class="col-6">
+        <div class="col-12 col-md-6 project-item">
           <img
             class="projectImg"
             src="assets/images/empty.png"
             alt="empty image"
           />
         </div>
-        <div class="col-6">
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-6 project-item">
           <img
             class="projectImg"
             src="assets/images/empty.png"
             alt="empty image"
           />
         </div>
-        <div class="col-6">
+        <div class="col-12 col-md-6 project-item">
           <img
             class="projectImg"
             src="assets/images/empty.png"
@@ -176,7 +182,9 @@
         enctype="multipart/form-data"
         autocomplete="off"
       >
-        <h1 id="contactH1">Contact Me</h1>
+        <h1 data-value="CONTACT ME" class="contactH1" id="hacker">
+          CONTACT ME
+        </h1>
         <div class="form-group">
           <input
             type="text"

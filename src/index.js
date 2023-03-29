@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/main.css";
 import * as THREE from "three";
 import empty from "./assets/images/empty.png";
+import "./assets/images/GroceryAppSS.png";
 import { getElements, getElementsByTagType, getElementById } from "domutils";
 import { FontLoader } from "/node_modules/three/examples/jsm/loaders/FontLoader";
 import { TextGeometry } from "/node_modules/three/examples/jsm/geometries/TextGeometry.js";
@@ -14,12 +15,10 @@ require("webpack-hot-middleware/client?reload=true");
  */
 // Canvas
 const canvas = document.querySelector("canvas.webgl");
-
 // Scene
 const scene = new THREE.Scene();
-
 /**
- * Light
+ * Lights
  */
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.45);
 // blue light
@@ -38,152 +37,181 @@ scene.add(ambientLight, directionalLightB, pointLightP);
 
 const fontLoader = new FontLoader();
 
-fontLoader.load("assets/fonts/helvetiker_regular.typeface.json", (font) => {
-  const javascript = new TextGeometry("Javascript", {
-    font: font,
-    size: 0.3,
-    height: 0.2,
-    curveSegments: 2,
-  });
-  const hTML = new TextGeometry("html", {
-    font: font,
-    size: 0.3,
-    height: 0.2,
-    curveSegments: 2,
-  });
-  const cSS = new TextGeometry("css", {
-    font: font,
-    size: 0.3,
-    height: 0.2,
-    curveSegments: 2,
-  });
-  const bootstrap = new TextGeometry("Bootstrap", {
-    font: font,
-    size: 0.3,
-    height: 0.2,
-    curveSegments: 2,
-  });
-  const threejs = new TextGeometry("Three.js", {
-    font: font,
-    size: 0.3,
-    height: 0.2,
-    curveSegments: 2,
-  });
-  const npm = new TextGeometry("npm", {
-    font: font,
-    size: 0.3,
-    height: 0.2,
-    curveSegments: 2,
-  });
-  const jSON = new TextGeometry("JSON", {
-    font: font,
-    size: 0.3,
-    height: 0.2,
-    curveSegments: 2,
-  });
-  const git = new TextGeometry("git", {
-    font: font,
-    size: 0.3,
-    height: 0.2,
-    curveSegments: 2,
-  });
-  const expressjs = new TextGeometry("Express.js", {
-    font: font,
-    size: 0.3,
-    height: 0.2,
-    curveSegments: 2,
-  });
-  const webpack = new TextGeometry("webpack", {
-    font: font,
-    size: 0.3,
-    height: 0.2,
-    curveSegments: 2,
-  });
-  const nodejs = new TextGeometry("node.js", {
-    font: font,
-    size: 0.3,
-    height: 0.2,
-    curveSegments: 2,
-  });
+fontLoader.load(
+  "assets/fonts/helvetiker_regular.typeface.json",
+  (font) => {
+    const javascript = new TextGeometry("Javascript", {
+      font: font,
+      size: 0.3,
+      height: 0.2,
+      curveSegments: 2,
+    });
+    const hTML = new TextGeometry("HTML", {
+      font: font,
+      size: 0.3,
+      height: 0.2,
+      curveSegments: 2,
+    });
+    const cSS = new TextGeometry("css", {
+      font: font,
+      size: 0.35,
+      height: 0.2,
+      curveSegments: 2,
+    });
+    const bootstrap = new TextGeometry("Bootstrap", {
+      font: font,
+      size: 0.3,
+      height: 0.2,
+      curveSegments: 2,
+    });
+    const threejs = new TextGeometry("Three.js", {
+      font: font,
+      size: 0.3,
+      height: 0.2,
+      curveSegments: 2,
+    });
+    const npm = new TextGeometry("npm", {
+      font: font,
+      size: 0.4,
+      height: 0.2,
+      curveSegments: 2,
+    });
+    const jSON = new TextGeometry("JSON", {
+      font: font,
+      size: 0.3,
+      height: 0.2,
+      curveSegments: 2,
+    });
+    const git = new TextGeometry("git", {
+      font: font,
+      size: 0.4,
+      height: 0.2,
+      curveSegments: 2,
+    });
+    const expressjs = new TextGeometry("Express.js", {
+      font: font,
+      size: 0.35,
+      height: 0.2,
+      curveSegments: 2,
+    });
+    const webpack = new TextGeometry("webpack", {
+      font: font,
+      size: 0.35,
+      height: 0.2,
+      curveSegments: 2,
+    });
+    const nodejs = new TextGeometry("node.js", {
+      font: font,
+      size: 0.4,
+      height: 0.2,
+      curveSegments: 2,
+    });
+    const mongodb = new TextGeometry("MongoDB", {
+      font: font,
+      size: 0.4,
+      height: 0.2,
+      curveSegments: 2,
+    });
+    const mongoose = new TextGeometry("mongoose", {
+      font: font,
+      size: 0.4,
+      height: 0.2,
+      curveSegments: 2,
+    });
 
-  const textMaterial = new THREE.MeshStandardMaterial();
-  // 3D Meshes
-  const js3D = new THREE.Mesh(javascript, textMaterial);
-  const hTML3D = new THREE.Mesh(hTML, textMaterial);
-  const cSS3D = new THREE.Mesh(cSS, textMaterial);
-  const bootstrap3D = new THREE.Mesh(bootstrap, textMaterial);
-  const threejs3D = new THREE.Mesh(threejs, textMaterial);
-  const npm3D = new THREE.Mesh(npm, textMaterial);
-  const jSON3D = new THREE.Mesh(jSON, textMaterial);
-  const git3D = new THREE.Mesh(git, textMaterial);
-  const expressjs3D = new THREE.Mesh(expressjs, textMaterial);
-  const webpack3D = new THREE.Mesh(webpack, textMaterial);
-  const nodejs3D = new THREE.Mesh(nodejs, textMaterial);
+    const textMaterial = new THREE.MeshStandardMaterial();
+    // 3D Meshes
+    const js3D = new THREE.Mesh(javascript, textMaterial);
+    const hTML3D = new THREE.Mesh(hTML, textMaterial);
+    const cSS3D = new THREE.Mesh(cSS, textMaterial);
+    const bootstrap3D = new THREE.Mesh(bootstrap, textMaterial);
+    const threejs3D = new THREE.Mesh(threejs, textMaterial);
+    const npm3D = new THREE.Mesh(npm, textMaterial);
+    const jSON3D = new THREE.Mesh(jSON, textMaterial);
+    const git3D = new THREE.Mesh(git, textMaterial);
+    const expressjs3D = new THREE.Mesh(expressjs, textMaterial);
+    const webpack3D = new THREE.Mesh(webpack, textMaterial);
+    const nodejs3D = new THREE.Mesh(nodejs, textMaterial);
+    const mongodb3D = new THREE.Mesh(mongodb, textMaterial);
+    const mongoose3D = new THREE.Mesh(mongoose, textMaterial);
 
-  // array of all TextGeometries
-  const textGeoms = [
-    javascript,
-    hTML,
-    cSS,
-    bootstrap,
-    threejs,
-    npm,
-    jSON,
-    git,
-    expressjs,
-    webpack,
-    nodejs,
-  ];
+    // array of all TextGeometries
+    const textGeoms = [
+      javascript,
+      hTML,
+      cSS,
+      bootstrap,
+      threejs,
+      npm,
+      jSON,
+      git,
+      expressjs,
+      webpack,
+      nodejs,
+      mongodb,
+      mongoose,
+    ];
 
-  const meshes3D = [
-    js3D,
-    hTML3D,
-    cSS3D,
-    bootstrap3D,
-    threejs3D,
-    npm3D,
-    jSON3D,
-    git3D,
-    expressjs3D,
-    webpack3D,
-    nodejs3D,
-  ];
+    const meshes3D = [
+      js3D,
+      hTML3D,
+      cSS3D,
+      bootstrap3D,
+      threejs3D,
+      npm3D,
+      jSON3D,
+      git3D,
+      expressjs3D,
+      webpack3D,
+      nodejs3D,
+      mongodb3D,
+      mongoose3D,
+    ];
 
-  textGeoms.forEach((i) => {
-    i.center();
-  });
-  meshes3D.forEach((i) => {
-    i.receiveShadow = true;
-    i.castShadow = true;
-  });
+    textGeoms.forEach((i) => {
+      i.center();
+    });
+    meshes3D.forEach((i) => {
+      i.receiveShadow = true;
+      i.castShadow = true;
+    });
 
-  // 3D Text Positions
-  hTML3D.position.set(-1.4, 0.8, 0);
-  cSS3D.position.set(-0.5, 0.8, 0);
-  js3D.position.set(0.9, 0.8, 0);
-  bootstrap3D.position.set(-1.3, 0.1, 0);
-  threejs3D.position.set(0.5, 0.1, 0);
-  npm3D.position.set(1.8, 0.1, 0);
-  jSON3D.position.set(-1.4, -0.6, 0);
-  git3D.position.set(-0.2, -0.6, 0);
-  webpack3D.position.set(1.2, -0.6, 0);
-  expressjs3D.position.set(-0.7, -1.3, 0);
-  nodejs3D.position.set(1.2, -1.3, 0);
+    // 3D Text Positions
+    hTML3D.position.set(-0.6, 1.3, 0);
+    cSS3D.position.set(0.6, 1.3, 0);
+    js3D.position.set(-0.9, 0.8, 0);
+    npm3D.position.set(1, 0.8, 0);
+    bootstrap3D.position.set(-1.0, 0.3, 0);
+    threejs3D.position.set(1.3, 0.3, 0);
+    git3D.position.set(-1.9, -0.2, 0);
+    jSON3D.position.set(-0.6, -0.2, 0);
+    webpack3D.position.set(1.2, -0.2, 0);
+    expressjs3D.position.set(-1.2, -0.9, 0);
+    nodejs3D.position.set(1.4, -0.9, 0);
+    mongodb3D.position.set(1.4, -1.6, 0);
+    mongoose3D.position.set(-1.3, -1.6, 0);
 
-  scene.add(
-    js3D,
-    hTML3D,
-    cSS3D,
-    bootstrap3D,
-    threejs3D,
-    npm3D,
-    jSON3D,
-    git3D,
-    expressjs3D,
-    webpack3D,
-    nodejs3D
-  );
-});
+    scene.add(
+      js3D,
+      hTML3D,
+      cSS3D,
+      bootstrap3D,
+      threejs3D,
+      npm3D,
+      jSON3D,
+      git3D,
+      expressjs3D,
+      webpack3D,
+      nodejs3D,
+      mongodb3D,
+      mongoose3D
+    );
+  },
+  // onProgress
+  (xhr) => {
+    // console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
+  }
+);
 
 /**
  * Window Sizes
@@ -219,7 +247,7 @@ const camera = new THREE.PerspectiveCamera(
 );
 camera.position.x = 0;
 camera.position.y = 2;
-camera.position.z = 4;
+camera.position.z = 3.8;
 camera.lookAt(0, 0, 0);
 scene.add(camera);
 
@@ -344,11 +372,16 @@ const projAnimation = (entries, observer) => {
 };
 const projObserver = new IntersectionObserver(projAnimation);
 
-const pElements = document.querySelectorAll(".projectImg");
+const projItem = document.querySelectorAll(".project-item");
+
 // tell observer what to track (project images)
-pElements.forEach((element) => {
+projItem.forEach((element) => {
   projObserver.observe(element);
 });
+// tell observer to track text
+// projTxt.forEach((element) => {
+//   projObserver.observe(element);
+// });
 
 /**
  *
@@ -388,4 +421,36 @@ contactForm.addEventListener("submit", (e) => {
   };
 
   xhr.send(JSON.stringify(formData));
+});
+
+// Hacker animation on text
+const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+let interval = null;
+
+document.querySelectorAll("#hacker").forEach((h1) => {
+  h1.onmouseover = (event) => {
+    let iteration = 0;
+
+    clearInterval(interval);
+
+    interval = setInterval(() => {
+      event.target.innerText = event.target.innerText
+        .split("")
+        .map((letter, index) => {
+          if (index < iteration) {
+            return event.target.dataset.value[index];
+          }
+
+          return letters[Math.floor(Math.random() * 26)];
+        })
+        .join("");
+
+      if (iteration >= event.target.dataset.value.length) {
+        clearInterval(interval);
+      }
+
+      iteration += 1 / 6;
+    }, 20);
+  };
 });
