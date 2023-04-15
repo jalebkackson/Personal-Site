@@ -45,10 +45,10 @@ module.exports = {
           },
         ],
       },
-      {
-        test: /\.json$/,
-        type: "json",
-      },
+      // {
+      //   test: /\.json$/,
+      //   type: "json",
+      // },
       // {
       //   test: /\.html$/,
       //   use: [
