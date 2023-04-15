@@ -5,12 +5,12 @@ const webpack = require("webpack");
 module.exports = {
   mode: "development",
   entry: {
-    bundle: path.resolve(__dirname, "src/index.js")
+    bundle: path.resolve(__dirname, "src/index.js"),
   },
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "[name][contenthash].js",
-    clean: true
+    clean: true,
   },
   devtool: "source-map",
   // devServer: {
@@ -25,13 +25,13 @@ module.exports = {
         use: {
           loader: "babel-loader",
           options: {
-            presets: ["@babel/preset-env"]
-          }
-        }
+            presets: ["@babel/preset-env"],
+          },
+        },
       },
       {
         test: /\.css$/i,
-        use: ["style-loader", "css-loader"]
+        use: ["style-loader", "css-loader"],
       },
       {
         test: /\.(jpg|png|gif|svg)$/,
@@ -40,15 +40,15 @@ module.exports = {
             loader: "file-loader",
             options: {
               name: "[name].[ext]",
-              outputPath: "assets/images/"
-            }
-          }
-        ]
+              outputPath: "assets/images/",
+            },
+          },
+        ],
       },
       {
         test: /\.json$/,
-        type: "json"
-      }
+        type: "json",
+      },
       // {
       //   test: /\.html$/,
       //   use: [
@@ -57,14 +57,14 @@ module.exports = {
       //     }
       //   ]
       // }
-    ]
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
       title: "Webpack App",
       filename: "index.html",
-      template: `src/template.html`
+      template: `src/template.html`,
     }),
-    new webpack.HotModuleReplacementPlugin()
-  ]
+    new webpack.HotModuleReplacementPlugin(),
+  ],
 };
