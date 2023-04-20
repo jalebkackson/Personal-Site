@@ -8,7 +8,7 @@ import { getElements, getElementsByTagType, getElementById } from "domutils";
 import { FontLoader } from "/node_modules/three/examples/jsm/loaders/FontLoader";
 import { TextGeometry } from "/node_modules/three/examples/jsm/geometries/TextGeometry.js";
 import CANNON from "cannon";
-import HelvetikerFontPath from "../node_modules/three/examples/fonts/helvetiker_regular.typeface.json";
+import HelvetikerFontPath from "./assets/fonts/helvetiker_regular.typeface.json";
 require("webpack-hot-middleware/client?reload=true");
 
 console.log(HelvetikerFontPath);
@@ -178,7 +178,7 @@ scene.add(ambientLight, directionalLightB, pointLightP);
 const fontLoader = new FontLoader();
 
 fontLoader.load(
-  "../node_modules/three/examples/fonts/helvetiker_regular.typeface.json",
+  "https://threejs.org/examples/fonts/helvetiker_bold.typeface.json",
   (font) => {
     const javascript = new TextGeometry("Javascript", {
       font: font,
@@ -224,25 +224,25 @@ fontLoader.load(
     });
     const git = new TextGeometry("git", {
       font: font,
-      size: 0.3,
+      size: 0.4,
       height: 0.2,
       curveSegments: 2,
     });
     const expressjs = new TextGeometry("Express.js", {
       font: font,
-      size: 0.3,
+      size: 0.4,
       height: 0.2,
       curveSegments: 2,
     });
     const webpack = new TextGeometry("webpack", {
       font: font,
-      size: 0.3,
+      size: 0.4,
       height: 0.2,
       curveSegments: 2,
     });
     const nodejs = new TextGeometry("node.js", {
       font: font,
-      size: 0.3,
+      size: 0.4,
       height: 0.2,
       curveSegments: 2,
     });
@@ -301,15 +301,15 @@ fontLoader.load(
     // 3D Text Positions
     hTML3D.position.set(-1.4, 0.8, 0);
     cSS3D.position.set(-0.5, 0.8, 0);
-    js3D.position.set(0.9, 0.8, 0);
+    js3D.position.set(1, 0.8, 0);
     bootstrap3D.position.set(-1.3, 0.1, 0);
     threejs3D.position.set(0.5, 0.1, 0);
     npm3D.position.set(1.8, 0.1, 0);
     jSON3D.position.set(-1.4, -0.6, 0);
-    git3D.position.set(-0.2, -0.6, 0);
+    git3D.position.set(-0.4, -0.6, 0);
     webpack3D.position.set(1.2, -0.6, 0);
-    expressjs3D.position.set(-0.7, -1.3, 0);
-    nodejs3D.position.set(1.2, -1.3, 0);
+    expressjs3D.position.set(-0.9, -1.3, 0);
+    nodejs3D.position.set(1.5, -1.3, 0);
 
     scene.add(
       js3D,
@@ -396,7 +396,7 @@ const tick = () => {
   const span = document.getElementById("mySpan");
   const spanOpacity = window.getComputedStyle(span).opacity;
 
-  pointLightP.intensity = spanOpacity * 0.85;
+  pointLightP.intensity = spanOpacity * 0.5;
 };
 
 tick();

@@ -46,8 +46,12 @@ module.exports = {
         ],
       },
       // {
-      //   test: /\.json$/,
-      //   type: "json",
+      //   test: /\.(json)$/,
+      //   use: {
+      //     options: {
+      //       outputPath: "assets/fonts/",
+      //     },
+      //   },
       // },
       // {
       //   test: /\.html$/,
