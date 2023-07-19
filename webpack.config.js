@@ -11,6 +11,7 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     filename: "[name][contenthash].js",
     clean: true,
+    publicPath: "/personal-site-production-17e9.up.railway.app",
   },
   devtool: "source-map",
   // devServer: {
