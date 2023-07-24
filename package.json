@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack",
     "start": "webpack serve",
-    "dev": "nodemon --watch config --watch src/server src/server/main.js"
+    "dev": "nodemon --watch config --watch src/server src/server/server.js"
   },
   "keywords": [],
   "author": "",
